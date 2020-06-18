@@ -38,13 +38,13 @@ sed -e "s/@_PKGBASE@/%{name}/" \
     -i "%{buildroot}/usr/src/%{name}-%{version}/dkms.conf"
     
 # Copy sources (including Makefile)
-cp -r %{name}/{i2c-piix4.c,Makefile} "%{buildroot}/usr/src/%{name}-%{version}/"
+cp -r %{name}/{i2c-piix4.c,Makefile} %{buildroot}/usr/src/%{name}-%{version}/
 
 # udev rule to alow users part of the 'wheel' group to access i2c without root privileges
-install -Dm644 %{_builddir}/90-i2c-aura.rules "%{buildroot}/etc/udev/rules.d/90-i2c-aura.rules"
+install -Dm644 %{_builddir}/90-i2c-aura.rules %{buildroot}/etc/udev/rules.d/90-i2c-aura.rules
 
 # modprobe needed modules at boot
-install -Dm644 %{_builddir}/i2c-aura.conf "%{buildroot}/etc/modules-load.d/i2c-aura.conf"
+install -Dm644 %{_builddir}/i2c-aura.conf %{buildroot}/etc/modules-load.d/i2c-aura.conf
 
 %clean
 if [ "$RPM_BUILD_ROOT" != "/" ]; then
@@ -54,6 +54,7 @@ fi
 %files
 %defattr(-,root,root)
 %config %{buildroot}/etc/modules-load.d/i2c-aura.conf
+%{buildroot}/etc/udev/rules.d/90-i2c-aura.rules
 /usr/src/%{module}-%{version}/
 
 %pre
