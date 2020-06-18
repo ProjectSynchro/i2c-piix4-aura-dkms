@@ -55,7 +55,7 @@ fi
 %defattr(-,root,root)
 %config /etc/modules-load.d/i2c-aura.conf
 /etc/udev/rules.d/90-i2c-aura.rules
-/usr/src/%{module}-%{version}/
+/usr/src/%{name}-%{version}/
 
 %pre
 
