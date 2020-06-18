@@ -84,7 +84,3 @@ dkms remove -m %{name} -v %{version} --all --rpm_safe_upgrade
 exit 0
 
 %changelog
-
-* Thu June 18 2020 Jack Greiner <jack@emoss.org> - 5.6.11-1%{?dist}
-
-- Initial RPM release
