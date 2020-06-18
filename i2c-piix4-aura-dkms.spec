@@ -36,7 +36,7 @@ install -Dm644 %{_builddir}/%{name}/dkms.conf %{buildroot}/usr/src/%{name}-%{ver
 sed -e "s/@_PKGBASE@/%{name}/" \
     -e "s/@PKGVER@/%{version}/" \
     -i "%{buildroot}/usr/src/%{name}-%{version}/dkms.conf"
-    
+
 # Copy sources (including Makefile)
 cp -r %{_sourcedir}/%{name}/{i2c-piix4.c,Makefile} %{buildroot}/usr/src/%{name}-%{version}/
 
@@ -82,5 +82,3 @@ echo -e
 echo -e "Uninstall of %{name} module (version %{version}) beginning:"
 dkms remove -m %{name} -v %{version} --all --rpm_safe_upgrade
 exit 0
-
-%changelog
