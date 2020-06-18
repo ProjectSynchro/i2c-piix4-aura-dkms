@@ -24,7 +24,7 @@ The i2c-piix4 kernel driver, patched to be used with OpenRGB: https://gitlab.com
 mkdir -p "%{_sourcedir}/%{name}" && cd "%{_sourcedir}/%{name}"
 
 cp ../dkms.conf ../Makefile .
-cp ../i2c-piix4-%{version}.c i2c-piix4.c
+cp ../i2c-piix4.c i2c-piix4.c
 
 patch --no-backup-if-mismatch -Np4 < ../piix4.patch
 
