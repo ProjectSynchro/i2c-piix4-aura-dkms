@@ -30,7 +30,7 @@ patch --no-backup-if-mismatch -Np4 < ../piix4.patch
 
 %install
 # Copy dkms.conf
-install -Dm644 dkms.conf "%{buildroot}/usr/src/%{name}-%{version}/dkms.conf"
+install -Dm644 %{_builddir}/%{name}/dkms.conf %{buildroot}/usr/src/%{name}-%{version}/dkms.conf
 
 # Set name and version
 sed -e "s/@_PKGBASE@/%{name}/" \
@@ -41,10 +41,10 @@ sed -e "s/@_PKGBASE@/%{name}/" \
 cp -r %{name}/{i2c-piix4.c,Makefile} "%{buildroot}/usr/src/%{name}-%{version}/"
 
 # udev rule to alow users part of the 'wheel' group to access i2c without root privileges
-install -Dm644 90-i2c-aura.rules "%{buildroot}/etc/udev/rules.d/90-i2c-aura.rules"
+install -Dm644 %{_builddir}/90-i2c-aura.rules "%{buildroot}/etc/udev/rules.d/90-i2c-aura.rules"
 
 # modprobe needed modules at boot
-install -Dm644 i2c-aura.conf "%{buildroot}/etc/modules-load.d/i2c-aura.conf"
+install -Dm644 %{_builddir}/i2c-aura.conf "%{buildroot}/etc/modules-load.d/i2c-aura.conf"
 
 %clean
 if [ "$RPM_BUILD_ROOT" != "/" ]; then
