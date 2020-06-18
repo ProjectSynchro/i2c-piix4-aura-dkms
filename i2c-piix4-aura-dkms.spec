@@ -12,7 +12,7 @@ Summary:        The i2c-piix4 kernel driver, patched to be used with OpenRGB: ht
 
 Group: System Environment/Kernel
 License: GPLv2
-URL: https://github.com/patjak/bcwc_pcie/
+URL: https://bugzilla.kernel.org/show_bug.cgi?id=202587
 
 Requires: dkms >= 1.00
 Requires: bash
@@ -53,8 +53,8 @@ fi
 
 %files
 %defattr(-,root,root)
-%config %{buildroot}/etc/modules-load.d/i2c-aura.conf
-%{buildroot}/etc/udev/rules.d/90-i2c-aura.rules
+%config /etc/modules-load.d/i2c-aura.conf
+/etc/udev/rules.d/90-i2c-aura.rules
 /usr/src/%{module}-%{version}/
 
 %pre
