@@ -35,7 +35,7 @@ install -Dm644 dkms.conf "%{buildroot}/usr/src/%{name}-%{version}/dkms.conf"
 # Set name and version
 sed -e "s/@_PKGBASE@/%{name}/" \
     -e "s/@PKGVER@/%{version}/" \
-    -i "%{buildroot}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
+    -i "%{buildroot}/usr/src/%{name}-%{version}/dkms.conf"
     
 # Copy sources (including Makefile)
 cp -r %{name}/{i2c-piix4.c,Makefile} "%{buildroot}/usr/src/%{name}-%{version}/"
