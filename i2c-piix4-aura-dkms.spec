@@ -13,6 +13,7 @@ Summary:        The i2c-piix4 kernel driver, patched to be used with OpenRGB: ht
 Group: System Environment/Kernel
 License: GPLv2
 URL: https://bugzilla.kernel.org/show_bug.cgi?id=202587
+Source0: https://github.com/ProjectSynchro/i2c-piix4-aura-dkms/archive/5.6.12.tar.gz
 
 Requires: dkms >= 1.00
 Requires: bash
