@@ -1,12 +1,12 @@
 ##Init variables
 
-%define version 5.6.12
+%define version 5.6.11
 
 ## Package info declaration
 
 Name:           i2c-piix4-aura-dkms
 Version:        %{version}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        The i2c-piix4 kernel driver, patched to be used with OpenRGB: https://gitlab.com/CalcProgrammer1/OpenRGB
 
 Group:          System Environment/Kernel
@@ -92,7 +92,7 @@ grubby --update-kernel=ALL --remove-args="acpi_enforce_resources=lax"
 exit 0
 
 %changelog
-* Thu Jun 18 2020 Jack Greiner <jack@emoss.org> 5.6.11-1%{?dist}
+* Thu Jun 18 2020 Jack Greiner <jack@emoss.org> 5.6.11-2%{?dist}
 - Initial RPM release
 * Sat Jun 20 2020 Jack Greiner <jack@emoss.org> 5.6.12-1%{?dist}
 - Added automatic grub configuration
