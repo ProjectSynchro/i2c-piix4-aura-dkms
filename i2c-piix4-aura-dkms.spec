@@ -15,6 +15,7 @@ URL:            https://bugzilla.kernel.org/show_bug.cgi?id=202587
 Source0:        %{name}-%{version}.tar.gz
 
 Requires:       dkms >= 1.00
+Requires:       grubby
 Requires:       bash
 
 %description
