@@ -71,6 +71,7 @@ dkms add -m %{name} -v %{version} --rpm_safe_upgrade
     if [ `uname -r | grep -c "BOOT"` -eq 0 ] && [ -e /lib/modules/`uname -r`/build/include ]; then
         dkms build -m %{name} -v %{version}
         dkms install -m %{name} -v %{version}
+        grubby --update-kernel=ALL --args='acpi_enforce_resources=lax'
     elif [ `uname -r | grep -c "BOOT"` -gt 0 ]; then
         echo -e ""
         echo -e "Module build for the currently running kernel was skipped since you"
@@ -86,6 +87,7 @@ exit 0
 echo -e
 echo -e "Uninstall of %{name} module (version %{version}) beginning:"
 dkms remove -m %{name} -v %{version} --all --rpm_safe_upgrade
+grubby --update-kernel=ALL --remove-args="acpi_enforce_resources=lax"
 exit 0
 
 ## Changelog (Because apparently this isn't the right syntax)
