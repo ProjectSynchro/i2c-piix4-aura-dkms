@@ -1,6 +1,6 @@
 ##Init variables
 
-%define version 5.6.11
+%define version 5.6.12
 
 ## Package info declaration
 
@@ -91,7 +91,9 @@ dkms remove -m %{name} -v %{version} --all --rpm_safe_upgrade
 grubby --update-kernel=ALL --remove-args="acpi_enforce_resources=lax"
 exit 0
 
-## Changelog (Because apparently this isn't the right syntax)
-
-#* Fri June 18 2020 Jack Greiner <jack@emoss.org>  - 5.6.11-1%{?dist}
-#- Initial RPM release
+%changelog
+* Thu Jun 18 2020 Jack Greiner <jack@emoss.org> 5.6.11-1%{?dist}
+- Initial RPM release
+* Sat Jun 20 2020 Jack Greiner <jack@emoss.org> 5.6.12-1%{?dist}
+- Added automatic grub configuration
+- Bumped version
