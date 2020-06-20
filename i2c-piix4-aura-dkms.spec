@@ -6,7 +6,7 @@
 
 Name:           i2c-piix4-aura-dkms
 Version:        %{version}
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        The i2c-piix4 kernel driver, patched to be used with OpenRGB: https://gitlab.com/CalcProgrammer1/OpenRGB
 
 Group:          System Environment/Kernel
@@ -15,7 +15,6 @@ URL:            https://bugzilla.kernel.org/show_bug.cgi?id=202587
 Source0:        %{name}-%{version}.tar.gz
 
 Requires:       dkms >= 1.00
-Requires:       grubby
 Requires:       bash
 
 %description
@@ -72,7 +71,6 @@ dkms add -m %{name} -v %{version} --rpm_safe_upgrade
     if [ `uname -r | grep -c "BOOT"` -eq 0 ] && [ -e /lib/modules/`uname -r`/build/include ]; then
         dkms build -m %{name} -v %{version}
         dkms install -m %{name} -v %{version}
-        grubby --update-kernel=ALL --args='acpi_enforce_resources=lax'
     elif [ `uname -r | grep -c "BOOT"` -gt 0 ]; then
         echo -e ""
         echo -e "Module build for the currently running kernel was skipped since you"
@@ -88,12 +86,9 @@ exit 0
 echo -e
 echo -e "Uninstall of %{name} module (version %{version}) beginning:"
 dkms remove -m %{name} -v %{version} --all --rpm_safe_upgrade
-grubby --update-kernel=ALL --remove-args="acpi_enforce_resources=lax"
 exit 0
 
-%changelog
-* Thu Jun 18 2020 Jack Greiner <jack@emoss.org> 5.6.11-2%{?dist}
-- Initial RPM release
-* Sat Jun 20 2020 Jack Greiner <jack@emoss.org> 5.6.12-1%{?dist}
-- Added automatic grub configuration
-- Bumped version
+## Changelog (Because apparently this isn't the right syntax)
+
+#* Fri June 18 2020 Jack Greiner <jack@emoss.org>  - 5.6.11-1%{?dist}
+#- Initial RPM release
